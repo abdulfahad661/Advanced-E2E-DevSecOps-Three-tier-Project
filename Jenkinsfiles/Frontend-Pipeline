@@ -13,7 +13,7 @@ pipeline {
         AWS_DEFAULT_REGION = 'us-east-1'
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/"
         GIT_REPO_NAME = 'Advanced-E2E-DevSecOps-Three-tier-Project'
-        GIT_USER_NAME = 'MohamedZezo7'
+        GIT_USER_NAME = 'abdulfahad661'
     }
 
     stages {
@@ -25,7 +25,7 @@ pipeline {
 
         stage('Checkout Git') {
             steps {
-                git branch: 'main', url: 'https://github.com/MohamedZezo7/Advanced-E2E-DevSecOps-Three-tier-Project.git'
+                git branch: 'main', url: 'https://github.com/abdulfahad661/Advanced-E2E-DevSecOps-Three-tier-Project.git'
             }
         }
 
@@ -95,8 +95,8 @@ pipeline {
                     withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                         script {
                             sh '''
-                            git config user.email "mohamedabdelazizk10@gmail.com"
-                            git config user.name "Mohamed Abdelaziz"
+                            git config user.email "abdulfahad661@gmail.com"
+                            git config user.name "abdulfahad661"
                             BUILD_NUMBER=${BUILD_NUMBER}
                             echo $BUILD_NUMBER
                             imageTag=$(grep -oP '(?<=frontend:)[^ ]+' deployment.yaml)
@@ -121,7 +121,7 @@ pipeline {
                     body: "Project: ${env.JOB_NAME}<br/>" +
                         "Build Number: ${env.BUILD_NUMBER}<br/>" +
                         "URL: ${env.BUILD_URL}<br/>",
-                    to: 'mohamedabdelazizk10@gmail.com',
+                    to: 'abdulfahad661@gmail.com',
                     attachmentsPattern: 'trivyfs-frontend*.txt, trivyimage*.txt'
             }
         }
